@@ -11,7 +11,7 @@ export const RegisterScreen = () => {
           placeholder='Name'
           name='name'
           className='auth__input mb-5'
-          autocomplete='off'
+          autoComplete='off'
         />
 
         <input
@@ -19,7 +19,7 @@ export const RegisterScreen = () => {
           placeholder='Email'
           name='email'
           className='auth__input mb-5'
-          autocomplete='off'
+          autoComplete='off'
         />
 
         <input

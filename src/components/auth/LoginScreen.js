@@ -11,7 +11,7 @@ export const LoginScreen = () => {
           placeholder='Email'
           name='email'
           className='auth__input'
-          autocomplete='off'
+          autoComplete='off'
         />
 
         <input
