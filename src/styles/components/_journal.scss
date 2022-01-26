@@ -89,14 +89,13 @@
 }
 
 .journal__entry-date-box {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px;
 
-    span {
-        font-size: 12px;
-    }
+  span {
+    font-size: 12px;
+  }
 }
-

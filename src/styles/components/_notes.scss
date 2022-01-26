@@ -1,14 +1,49 @@
 .notes__main-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .notes__appbar {
-    align-items: center;
-    background-color: $primary;
-    color: $white;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
+  align-items: center;
+  background-color: $primary;
+  color: $white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.notes__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+}
+
+.note__title-input,
+.notes_-textarea {
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.note__title-input {
+  color: $dark-gray;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.notes_-textarea {
+  border: none;
+  color: $dark-gray;
+  font-size: 20px;
+  flex: 1 1 auto;
+  resize: none;
+}
+
+.note__image input {
+  box-shadow: 5px 5px $dark-gray;
+  width: 50%;
 }
