@@ -11,10 +11,10 @@ export const RegisterScreen = () => {
   const { msgError } = useSelector((state) => state.ui);
 
   const [formValues, handleInputChange, reset] = useForm({
-    name: '',
-    email: '',
-    password: '',
-    password2: '',
+    name: 'Leonardo Farina',
+    email: 'leo@gmail.com',
+    password: '!%Lfar0618',
+    password2: '!%Lfar0618',
   });
 
   const { name, email, password, password2 } = formValues;
@@ -24,8 +24,8 @@ export const RegisterScreen = () => {
 
     if (isFormValid()) {
       dispatch(startRegisterWithEmailPasswordName(email, password, name));
+      reset();
     }
-    reset();
   };
 
   const isFormValid = () => {
