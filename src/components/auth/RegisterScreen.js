@@ -2,19 +2,19 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
 import { useForm } from '../../hooks/useForm';
-import { setError, removeError, setSuccess } from '../../actions/iu';
+import { setError, removeError } from '../../actions/iu';
 import { startRegisterWithEmailPasswordName } from '../../actions/auth';
 
 export const RegisterScreen = () => {
   const dispatch = useDispatch();
 
-  const { msgError, msgSuccess } = useSelector((state) => state.ui);
+  const { msgError } = useSelector((state) => state.ui);
 
   const [formValues, handleInputChange, reset] = useForm({
-    name: 'Leo',
-    email: 'leo@gmail.com',
-    password: '!%Lfar0618',
-    password2: '!%Lfar0618',
+    name: '',
+    email: '',
+    password: '',
+    password2: '',
   });
 
   const { name, email, password, password2 } = formValues;
@@ -24,9 +24,8 @@ export const RegisterScreen = () => {
 
     if (isFormValid()) {
       dispatch(startRegisterWithEmailPasswordName(email, password, name));
-      dispatch(setSuccess('Message sent'));
     }
-    // reset();
+    reset();
   };
 
   const isFormValid = () => {
@@ -53,7 +52,6 @@ export const RegisterScreen = () => {
 
       <form onSubmit={handleRegister}>
         {msgError && <div className='auth__alert-error'>{msgError}</div>}
-        {msgSuccess && <div className='auth__alert-success'>{msgSuccess}</div>}
 
         <input
           type='text'

@@ -9,11 +9,6 @@ export const removeError = () => ({
   type: types.uiRemoveError,
 });
 
-export const setSuccess = (success) => ({
-  type: types.uiSetSuccess,
-  payload: success,
-});
-
 export const startLoading = () => ({
   type: types.uiStartLoading,
 });
