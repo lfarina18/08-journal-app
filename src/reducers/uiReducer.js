@@ -3,7 +3,6 @@ import { types } from '../types/types';
 const initialState = {
   loading: false,
   msgError: null,
-  msgSuccess: null
 };
 
 export const uiReducer = (state = initialState, action) => {
@@ -28,12 +27,6 @@ export const uiReducer = (state = initialState, action) => {
         ...state,
         loading: false,
       };
-    case types.uiSetSuccess:
-    return {
-      ...state,
-      msgSuccess: action.payload,
-    };
-
     default:
       return state;
   }
