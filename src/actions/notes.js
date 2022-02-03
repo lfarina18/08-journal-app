@@ -4,8 +4,6 @@ import { fileUpload } from '../helpers/fileUpload';
 import { loadNotes } from '../helpers/loadNotes';
 import { types } from '../types/types';
 
-// react-journal
-
 export const startNewNote = () => {
   return async (dispatch, getState) => {
     const uid = getState().auth.uid;
@@ -20,6 +18,9 @@ export const startNewNote = () => {
 
     dispatch(activeNote(doc.id, newNote));
     dispatch(addNewNote(doc.id, newNote));
+    document
+      .querySelector(`[data-id="${doc.id}"]`)
+      .classList.add('animate__bounceInLeft');
   };
 };
 
@@ -34,15 +35,18 @@ export const activeNote = (id, note) => ({
 export const addNewNote = (id, note) => ({
   type: types.notesAddNew,
   payload: {
-    id, ...note
-  }
-
-})
+    id,
+    ...note,
+  },
+});
 
 export const startLoadingNotes = (uid) => {
   return async (dispatch) => {
     const notes = await loadNotes(uid);
     dispatch(setNotes(notes));
+    document.querySelectorAll('.journal__entry').forEach((entry) => {
+      entry.classList.add('animate__fadeIn');
+    });
   };
 };
 
@@ -101,9 +105,33 @@ export const startUploading = (file) => {
 export const startDeleting = (id) => {
   return async (dispatch, getState) => {
     const uid = getState().auth.uid;
-    await db.doc(`${uid}/journal/notes/${id}`).delete();
 
-    dispatch(deleteNote(id));
+    try {
+      await db.doc(`${uid}/journal/notes/${id}`).delete();
+      if (
+        document
+          .querySelector(`.journal__entry[data-id="${id}"]`)
+          .classList.contains('animate__fadeIn')
+      ) {
+        document
+          .querySelector(`.journal__entry[data-id="${id}"]`)
+          .classList.replace('animate__fadeIn', 'animate__bounceOutLeft');
+      } else if (
+        document
+          .querySelector(`.journal__entry[data-id="${id}"]`)
+          .classList.contains('animate__bounceInLeft')
+      ) {
+        document
+          .querySelector(`.journal__entry[data-id="${id}"]`)
+          .classList.replace('animate__bounceInLeft', 'animate__bounceOutLeft');
+      }
+      setTimeout(() => {
+        dispatch(deleteNote(id));
+      }, 350);
+    } catch (error) {
+      console.error(error.message || error);
+      Swal.fire('Error', 'Unexpected error. Try it again.', 'error');
+    }
   };
 };
 

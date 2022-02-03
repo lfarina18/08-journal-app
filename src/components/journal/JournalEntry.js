@@ -13,8 +13,10 @@ export const JournalEntry = ({ id, date, title, body, url }) => {
 
   return (
     <div
-      className='journal__entry pointer animate__animated animate__backInLeft'
-      onClick={handleEntryClick}>
+      className='journal__entry pointer animate__animated'
+      onClick={handleEntryClick}
+      data-id={id}
+      >  
       {url && (
         <div
           className='journal__entry-picture'
