@@ -6,6 +6,7 @@ export const fileUpload = async (file) => {
     const formData = new FormData();
     formData.append('upload_preset', 'react-journal');
     formData.append('file', file);
+    formData.append('folder', 'journal-app');
     
     try {
 

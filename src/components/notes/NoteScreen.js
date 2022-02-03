@@ -53,8 +53,8 @@ export const NoteScreen = () => {
           <div className='note__image'>
             <input
               type='image'
-              src={'https://images8.alphacoders.com/490/thumb-1920-490410.jpg'}
-              alt='car photo'
+              src={note.url}
+              alt='imagen'
             />
           </div>
         )}
