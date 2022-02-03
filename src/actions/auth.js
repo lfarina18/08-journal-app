@@ -2,6 +2,7 @@ import Swal from 'sweetalert2';
 import { firebase, googleAuthProvider } from '../firebase/firebase-config';
 import { types } from '../types/types';
 import { finisLoading, startLoading } from './iu';
+import { noteLogout } from './notes';
 
 export const startLoginEmailPassword = (email, password) => {
   return (dispatch) => {
@@ -29,7 +30,6 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(async ({ user }) => {
-        
         await user.updateProfile({ displayName: name });
         dispatch(login(user.uid, user.displayName));
         // console.log(user);
@@ -64,6 +64,7 @@ export const startLogout = () => {
   return async (dispatch) => {
     await firebase.auth().signOut();
     dispatch(logout());
+    dispatch(noteLogout());
   };
 };
 
