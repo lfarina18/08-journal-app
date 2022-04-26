@@ -18,9 +18,9 @@ export const startNewNote = () => {
 
     dispatch(activeNote(doc.id, newNote));
     dispatch(addNewNote(doc.id, newNote));
-    document
-      .querySelector(`[data-id="${doc.id}"]`)
-      .classList.add('animate__bounceInLeft');
+    // document
+    //   .querySelector(`[data-id="${doc.id}"]`)
+    //   .classList.add('animate__bounceInLeft');
   };
 };
 
