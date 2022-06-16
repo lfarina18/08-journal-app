@@ -75,7 +75,7 @@ export const LoginScreen = () => {
             </p>
           </div>
         </div>
-        <Link to='/auth/register' className='link mt-5'>
+        <Link to='/journal-app/auth/register' className='link mt-5'>
           Create a new account
         </Link>
       </form>
